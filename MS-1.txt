@@ -1,0 +1,106 @@
+                                                      <----Load Balancer ---->
+
+Terminal:- yum install httpd -y     //Add http in security group with port 80
+echo "this is server 1" >> /var/www/html/index.html
+cat /etc/os-release
+systemctl start httpd
+curl http://localhost
+
+Ubuntu:- apt update -y
+apt install apache2
+cat /etc/os-release
+echo "this is ubuntu server" >> /var/www/html/index.html
+systemctl start apche2
+systemctl enable apache2
+
+Steps:- go to LB -> Create LB -> select same security group -> create Target Group -> select instances -> Select Zone -> Create TG -> Register Target -> go to LB -> select TG -> Create LB -> Copy and paste DNS url
+
+any one Terminal:-systemctl stop httpd
+ TG -> Refresh -> Machine going to unhealthy ->TG -> Attributes -> Target selection configuration -> on stickness -> Save 
+
+
+
+
+                                               <---------------- S3 Bucket -------------->
+
+Create bucket -> Enable Versioning -> Enable ACL -> upload files -> click on object -> go to permission -> give read read permission in ACL edit -> create an instance and connect
+create IamUser -> select attach policy directly ->choose amazon s3 fullaccess -> create user
+Terminal:- yum update -y
+       yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+       git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+       ll
+   14  cd s3fs-fuse
+   15  ./autogen.sh
+   16  ./test-driver
+   17  ll
+   18  ./configure
+   19  ./configure --prefix=/usr --with-openssl
+   20  make
+   21  sudo make install
+   22  which s3fs
+   23  cd
+   24  touch etc/passwd-s3fs
+   25  cd s3fs-fuse
+   26  touch etc/passwd-s3fs
+   27  which s3fs
+   28  ll
+   29  cd
+   30  touch /etc/passwd-s3fs
+   31  ll
+   32  ll -d
+   33  ll -d /etc/passwd-s3fs
+   34  vim /etc/passwd-s3fs
+   35  sudo chmod 640 /etc/passwd-s3fs
+   36  s3fs s372003 /mnt -o passwd_file=/etc/passwd-s3fs
+   37  cd /mnt
+   38  ls
+   39  touch ss.txt
+   40  cd
+
+<-------------------------- Jenkins ------------>
+term:- 
+  hostnamectl set-hostname jenkins-server.example.com
+    2  bash
+    3  yum update -y
+    4  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    5  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    6  sudo yum upgrade
+    7  sudo yum install java-17-amazon-corretto -y
+    8  sudo yum install jenkins -y
+    9  yum repolist all
+   10  systemctl start jenkins
+   11  systemctl status jenkins
+   12  cat /var/lib/jenkins/secrets/initialAdminPassword
+   13  mount -o remount,size=2G /tmp
+   14  df -h
+   15  vim /etc/fstab
+   16  systemctl daemon-reload
+reboot instance
+   17  systemctl start jenkins
+   18  yum install git -y
+   19  git init
+   20  mkdir data
+   21  cd data
+   22  cd
+   23  ssh-keygen
+   24  cat /etc/.ssh/id_rsa.pub
+   25  cd .ssh/
+   27  cat id_rsa.pub
+   28  cd
+       
+installjenkins -> set port 8080 -> Generate token -> add webhook -> add ssh key -> new item -> build now -> configure -> workplace
+
+
+<------------------VPC ---------->
+create vpc -> IPv4 cidr -> 10.0.0.0/16 -> create vpc -> Create igw -> create subnet -> public subnet -> choose zone -> ipv4 subnet cidr 10.0.0.0/24 ->create subnet -> create private subnet -> select another zone -> cidr ->10.0.1.0/24 -> go ec2 inst -> auto assign public ip -> enable -> launch inst ->ctreate db-server -> keep it private same security group -> create inst -> add http in inbound rules in web-serv -> attach our igw to our vpc -> create route table -> create rt -> edit routes -> add route -> devops -igw -> go to subnet association -> select public subnet -> edit -> add icmp port in web-serv -> connect web-serv -> 
+web-serv term :-systemctl start httpd
+ vim w34.pem
+//paste key content and save
+chmod 400 w34.pem
+ssh -i "w34.pem" ec2-user@10.0.0.138 //paste private ip of web-serv
+connect 
+
+create nat gateway -> subnet -> public -> allocate elastic ip -> create private route table -> edit route -> add private subnet in subnet association 
+
+Term:- ping google.com
+ 
