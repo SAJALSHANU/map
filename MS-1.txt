@@ -169,10 +169,14 @@ Term:
 
 
 <--------------------- AMI -------------------->
-create instance -> Add 8080 http port 
+create instance -> Add 8080 http port -> select the  inst -> action -> create image -> go to create image -> keep the reboot instance untick -> click on create -> create new instance -> slect my ami ->
+create -> copy the ip and paste in browser with port 80 -> on aws console check files are present or notby ll or ls -> go to ami -> action and copy ami -> choose destination ohio region -> click on copy ami ->
+switch to ohio region in new tab -> check ami 
 term :
 hostnamectl set-hostname sever.example.com
 bash
 cat > index.html
 
+ohio reg:-
 create ami -> launch inst from ami -> copy ami in ohio ->launch inst from ami in ohio
+
