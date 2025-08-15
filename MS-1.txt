@@ -105,6 +105,8 @@ connect
 
 create nat gateway -> subnet -> public -> allocate elastic ip -> create private route table -> edit route -> add private subnet in subnet association 
 
+Term:- ping google.com
+
 
 
 <----------------- EBS --------------->
@@ -174,14 +176,3 @@ bash
 cat > index.html
 
 create ami -> launch inst from ami -> copy ami in ohio ->launch inst from ami in ohio
-
-
-
-
-
-
-
-Term:- ping google.com
-
- 
-
