@@ -105,6 +105,83 @@ connect
 
 create nat gateway -> subnet -> public -> allocate elastic ip -> create private route table -> edit route -> add private subnet in subnet association 
 
+
+
+<----------------- EBS --------------->
+Steps:- Launch an instance -> 
+Term: 
+sudo su -
+yum install httpd -y
+cd /var/www/html/
+cat > index.html
+ll
+systemctl start httpd
+systemctl status httpd
+curl http://localhost 
+
+Steps:- Create vol -> Action -> Modify Vol
+
+Term:
+df -h
+blkid
+lsblk
+df -h
+growpart /dev/xvda
+df -h
+xfs_growfs -d /
+//restart server
+sudo su -
+ Steps: Create new vol -> gp2 space 5gb -> same zone -> create vol -> assign name -> attach vol -> add vol
+Term:
+ df -h
+    2  lsblk
+    3  fdisk -l
+    4  fdisk /dev/sdb
+    5  fdisk -l
+    6  fdisk /dev/sdb
+    7  fdisk -l
+    8  mkfs.ext4 /dev/sdb
+    9  mkdir /devops
+   10  mount /dev/sdb /devops/
+   11  mkdir data
+   12  mount /dev/nvme1n1p5 /data/
+   13  rm -rf data
+   14  mkdir /data
+   15  mount /dev/nvme1n1p5 /data/
+   16  df -h
+   17  cd /devops/
+   18  touch sajal.txt{1..10}
+   19  ll
+
+<----------------------Snapshot -------------->
+Steps: create snap of 5gb vol -> select snap -> action -> copy snap in ohio reg -> go to ohio region -> create volume from snap -> launch inst in ohio diff key same SG-> connect
+Term:
+    1  lsblk
+    2  lsblk -fs
+    3  mkdir /test
+    4  mount /dev/sdb /test
+    5  cd
+    6  cd /test
+    7  ls
+    8  umount /test
+
+
+<--------------------- AMI -------------------->
+create instance -> Add 8080 http port 
+term :
+hostnamectl set-hostname sever.example.com
+bash
+cat > index.html
+
+create ami -> launch inst from ami -> copy ami in ohio ->launch inst from ami in ohio
+
+
+
+
+
+
+
 Term:- ping google.com
 
  
+
