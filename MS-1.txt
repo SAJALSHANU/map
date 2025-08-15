@@ -180,3 +180,42 @@ cat > index.html
 ohio reg:-
 create ami -> launch inst from ami -> copy ami in ohio ->launch inst from ami in ohio
 
+<-------------- EFS ---------------------->
+
+CDeploy ec2 inst in diff region diff OS (linux,ubuntu ,redhat)
+
+Term1:
+ rpmquery nfs-utils
+systemctl start nfs-utils
+systemctl status nfs-utils
+mkdir /devops
+ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0d5953ce771b64cce.efs.us-east-1.amazonaws.com:/ (from efs dns )
+touch filename{1..10}
+ll
+
+ Term2 :
+ apt update
+apt install nfs-common
+systemctl start nfs-utils.service
+systemctl status nfs-utils.service
+mkdir /data
+(efs dns link paste )
+touch filename{1..10}
+ll
+
+Term3:
+yum install nfs-utils -y
+mkdir /ani
+(paste efs dns link)
+touch filename{1..10}
+ll
+
+
+create a folder in all 3 instances -> mkdir name -> create a security group -> allow port nfs 2049 -> go to instances -> Security group -> inbound rulse -> 2049->
+go to efs -> network -> remove default security group -> choose new created security group -> go to efs file system and attach it -> mount via dns -> copy dns and paste in terminal with folder name -> removing efs from end 
+
+
+<-- Replicate -->
+change reg to ohio -> create a file system and security group(nfs) -> go to nfs -> select filesystem -> network -> security group in 2a-b-c -> go to N.vir ->
+select the existing efs -> disable replicate override permission in edit -> go to replicate -> existing system -> select dest -> ohio region -> browse efs ->
+select -> create replication
