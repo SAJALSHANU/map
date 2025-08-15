@@ -92,7 +92,10 @@ installjenkins -> set port 8080 -> Generate token -> add webhook -> add ssh key 
 
 
 <------------------VPC ---------->
-create vpc -> IPv4 cidr -> 10.0.0.0/16 -> create vpc -> Create igw -> create subnet -> public subnet -> choose zone -> ipv4 subnet cidr 10.0.0.0/24 ->create subnet -> create private subnet -> select another zone -> cidr ->10.0.1.0/24 -> go ec2 inst -> auto assign public ip -> enable -> launch inst ->ctreate db-server -> keep it private same security group -> create inst -> add http in inbound rules in web-serv -> attach our igw to our vpc -> create route table -> create rt -> edit routes -> add route -> devops -igw -> go to subnet association -> select public subnet -> edit -> add icmp port in web-serv -> connect web-serv -> 
+create vpc -> IPv4 cidr -> 10.0.0.0/16 -> create vpc -> Create igw -> create subnet -> public subnet -> choose zone -> ipv4 subnet cidr 10.0.0.0/24 ->create subnet -> create private subnet -> 
+select another zone -> cidr ->10.0.1.0/24 -> go ec2 inst -> auto assign public ip -> enable -> launch inst ->ctreate db-server -> keep it private same security group -> create inst -> 
+add http in inbound rules in web-serv -> attach our igw to our vpc -> create route table -> create rt -> edit routes -> add route -> devops -igw -> go to subnet association -> 
+select public subnet -> edit -> add icmp port in web-serv -> connect web-serv -> 
 web-serv term :-systemctl start httpd
  vim w34.pem
 //paste key content and save
@@ -103,4 +106,5 @@ connect
 create nat gateway -> subnet -> public -> allocate elastic ip -> create private route table -> edit route -> add private subnet in subnet association 
 
 Term:- ping google.com
+
  
