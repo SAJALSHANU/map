@@ -74,6 +74,7 @@ term:-
    13  mount -o remount,size=2G /tmp
    14  df -h
    15  vim /etc/fstab
+    tmpfs /tmp tmpfs defaults,noatime,size=2G,mode=1777 0 0
    16  systemctl daemon-reload
 reboot instance
    17  systemctl start jenkins
@@ -219,3 +220,4 @@ go to efs -> network -> remove default security group -> choose new created secu
 change reg to ohio -> create a file system and security group(nfs) -> go to nfs -> select filesystem -> network -> security group in 2a-b-c -> go to N.vir ->
 select the existing efs -> disable replicate override permission in edit -> go to replicate -> existing system -> select dest -> ohio region -> browse efs ->
 select -> create replication
+
