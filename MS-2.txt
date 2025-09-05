@@ -27,7 +27,7 @@ Term(d) : docker inspect dockername | less
 <-------------------- EKS ----------------->
 -> Create install and allow port 80 and 8080 ->12 gp3 -> create user -> give policy administrator access -> create i am role and give ec2 fullaccess, eks cluster policy, iamfull access -> attach role to your eks instance
 
-// write GitHub code of sir repository to creating cluster and nodegroup then write this inside my-pod.yaml
+// write GitHub code of sir repository(eks cluster creating) to creating cluster and nodegroup then write this inside my-pod.yaml
 vim mypod.yaml:
 apiVersion: v1
 kind: Pod
@@ -48,4 +48,5 @@ Term:
        kubectl get svc
        kubectl get pods
   
+
 
