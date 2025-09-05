@@ -1,0 +1,50 @@
+<--------------- Docker -------------->
+Steps: create an inst and allow port 8080 and 80-> name(docker-host) -> connect to terminal -> set hostname -> install docker
+
+Term:
+yum install docker* -y
+sudo dnf -y install dnf-plugins-core
+rpmquery docker
+systemctl start docker
+systemctl enable docker
+
+->Search dockerhub -> search ubuntu -> open -> copy cmd and paste into term -> do same with httpd and centos
+
+Term: docker run -it --name dockername -p 8080:80 ubuntu:rolling /bin/bash      --> run this cmd to create container
+term(c):-      apt update -y
+      apt install apache2 -y
+      echo "hello" > /var/www/html/index.html
+      service apache2 start
+      service apache2 status
+Term(d) : docker inspect dockername | less
+          curl http://paste ip
+          docker image ls
+          docker ps -a
+          docker stop dockername
+          docker rm dockername        -->to delete container
+          
+         
+<-------------------- EKS ----------------->
+-> Create install and allow port 80 and 8080 ->12 gp3 -> create user -> give policy administrator access -> create i am role and give ec2 fullaccess, eks cluster policy, iamfull access -> 
+
+// write GitHub code of sir repository to creating cluster and nodegroup then write this inside my-pod.yaml
+vim mypod.yaml:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
+Term:
+       vim mypod.yaml
+       kubectl apply -f mypod.yaml
+       kubectl expose pod nginx --type=LoadBalancer --port=80
+       kubectl get svc
+       kubectl get pods
+  
